@@ -1,10 +1,10 @@
 import cv2
-classificador = cv2.CascadeClassifier('cascades\haarcascade_frontalface_default.xml') #cria um classificador
+classificador = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml') #cria um classificador
 
-imagem = cv2.imread('pessoas\\pessoas1.jpg') #leitura da imagem
+imagem = cv2.imread('pessoas/turma.jpg') #leitura da imagem
 imagemCinza = cv2.cvtColor(imagem,cv2.COLOR_BGR2GRAY) # transforma a imagem em cinza
 
-facesDetectadas = classificador.detectMultiScale(imagemCinza) #chama o classificador e a variável guarda as faces detectadas
+facesDetectadas = classificador.detectMultiScale(imagemCinza,minNeighbors=9,minSize=(20,20)) #chama o classificador e a variável guarda as faces detectadas
 print(len(facesDetectadas)) # facesDectadas e uma matriz, no print ele está informando o tamanho dessa matriz
 
 print(facesDetectadas) # na saída, temos na primeira linha posição X 93 posição Y 71, largura 100 e altura 100
